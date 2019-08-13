@@ -14,6 +14,7 @@
 		842ABA3B2302A6FD00553D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842ABA392302A6FD00553D7D /* LaunchScreen.storyboard */; };
 		842ABA462302A6FD00553D7D /* UserInterfaceSyleDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABA452302A6FD00553D7D /* UserInterfaceSyleDemoTests.swift */; };
 		842ABA512302A6FD00553D7D /* UserInterfaceSyleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABA502302A6FD00553D7D /* UserInterfaceSyleDemoUITests.swift */; };
+		842ABA5F2302A97A00553D7D /* AppearanceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ABA5E2302A97A00553D7D /* AppearanceState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		842ABA4C2302A6FD00553D7D /* UserInterfaceSyleDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserInterfaceSyleDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842ABA502302A6FD00553D7D /* UserInterfaceSyleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceSyleDemoUITests.swift; sourceTree = "<group>"; };
 		842ABA522302A6FD00553D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842ABA5E2302A97A00553D7D /* AppearanceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				842ABA372302A6FD00553D7D /* Assets.xcassets */,
 				842ABA392302A6FD00553D7D /* LaunchScreen.storyboard */,
 				842ABA3C2302A6FD00553D7D /* Info.plist */,
+				842ABA5E2302A97A00553D7D /* AppearanceState.swift */,
 			);
 			path = UserInterfaceSyleDemo;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				842ABA332302A6FC00553D7D /* ViewController.swift in Sources */,
 				842ABA312302A6FC00553D7D /* AppDelegate.swift in Sources */,
+				842ABA5F2302A97A00553D7D /* AppearanceState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
