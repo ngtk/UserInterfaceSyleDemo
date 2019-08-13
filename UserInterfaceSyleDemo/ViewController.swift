@@ -7,20 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController, UserInterfaceStyleChanging {
     var appApearanceState: AppAppearanceState
-
+    let disposeBag = DisposeBag()
     var button = UIButton()
 
     init(appAppearanceState: AppAppearanceState) {
         self.appApearanceState = appAppearanceState
         super.init(nibName: nil, bundle: nil)
-        subscribeUserIntrafaceStyle()
-    }
 
-    deinit {
-        unsubscribeUserInterfaceStyle()
+        subscribeUserIntrafaceStyle()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +60,6 @@ class ViewController: UIViewController, UserInterfaceStyleChanging {
     // Update user interface style in the root view controller.
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
 
         if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
             appApearanceState.updateSystemUserInterfaceStyle(traitCollection.userInterfaceStyle)

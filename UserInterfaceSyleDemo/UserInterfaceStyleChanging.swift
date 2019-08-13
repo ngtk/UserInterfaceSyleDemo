@@ -7,34 +7,19 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol UserInterfaceStyleChanging {
+    var disposeBag: DisposeBag { get }
+
     func subscribeUserIntrafaceStyle()
-    func unsubscribeUserInterfaceStyle()
     func userInterfaceStyleDidChange(_ userInterfaceStyle: UIUserInterfaceStyle)
 }
 
 extension UserInterfaceStyleChanging {
     func subscribeUserIntrafaceStyle() {
-        NotificationCenter.default.addObserver(
-            forName: AppAppearanceState.userInterfaceStyleDidChange,
-            object: nil,
-            queue: nil,
-            using: { self.handleUserInterfaceStyle($0) }
-        )
-
-    }
-
-    func unsubscribeUserInterfaceStyle() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: AppAppearanceState.userInterfaceStyleDidChange,
-            object: self
-        )
-    }
-
-    func handleUserInterfaceStyle(_ notification: Notification) {
-        guard let userInterfaceStyle = notification.object as? UIUserInterfaceStyle else { return }
-        userInterfaceStyleDidChange(userInterfaceStyle)
+        AppAppearanceState.shared.userInterfaceStyle
+            .subscribe(onNext: { style in self.userInterfaceStyleDidChange(style) })
+            .disposed(by: disposeBag)
     }
 }

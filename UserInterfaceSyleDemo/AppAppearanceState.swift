@@ -8,23 +8,15 @@
 
 import UserNotifications
 import UIKit
+import RxSwift
 
 class AppAppearanceState {
-    static var userInterfaceStyleDidChange = Notification.Name("AppAppearanceState.UserInterfaceStyleDidChange")
+    static let shared = AppAppearanceState()
 
-    private var userInterfaceStyle = UIUserInterfaceStyle.light {
-        didSet {
-            if userInterfaceStyle != oldValue {
-                // Broadcast here.
-                NotificationCenter.default.post(
-                    name: AppAppearanceState.userInterfaceStyleDidChange,
-                    object: userInterfaceStyle
-                )
-            }
-        }
-    }
+    private let userInterfaceStyleSubject = BehaviorSubject<UIUserInterfaceStyle>(value: .light)
+    lazy var userInterfaceStyle: Observable<UIUserInterfaceStyle> = userInterfaceStyleSubject.asObservable()
 
     func updateSystemUserInterfaceStyle(_ userInterfaceStyle: UIUserInterfaceStyle) {
-        self.userInterfaceStyle = userInterfaceStyle
+        userInterfaceStyleSubject.onNext(userInterfaceStyle)
     }
 }

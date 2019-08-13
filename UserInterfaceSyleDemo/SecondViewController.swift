@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class SecondViewController: UIViewController, UserInterfaceStyleChanging {
+    let disposeBag = DisposeBag()
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
@@ -17,10 +20,6 @@ class SecondViewController: UIViewController, UserInterfaceStyleChanging {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-        unsubscribeUserInterfaceStyle()
     }
 
     override func viewDidLoad() {
