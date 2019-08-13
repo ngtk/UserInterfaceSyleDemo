@@ -10,7 +10,6 @@ import UIKit
 
 protocol UserInterfaceStyleChanging {
     func subscribeUserIntrafaceStyle()
-    func unsubscribeUserInterfaceStyle()
     func userInterfaceStyleDidChange(_ userInterfaceStyle: UIUserInterfaceStyle)
 }
 
@@ -23,14 +22,6 @@ extension UserInterfaceStyleChanging {
             using: { self.handleUserInterfaceStyle($0) }
         )
 
-    }
-
-    func unsubscribeUserInterfaceStyle() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: AppAppearanceState.userInterfaceStyleDidChange,
-            object: self
-        )
     }
 
     func handleUserInterfaceStyle(_ notification: Notification) {

@@ -19,10 +19,6 @@ class SecondViewController: UIViewController, UserInterfaceStyleChanging {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        unsubscribeUserInterfaceStyle()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
