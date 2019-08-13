@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UserInterfaceStyleChanging {
     var appApearanceState: AppAppearanceState
 
     var button = UIButton()
@@ -16,6 +16,11 @@ class ViewController: UIViewController {
     init(appAppearanceState: AppAppearanceState) {
         self.appApearanceState = appAppearanceState
         super.init(nibName: nil, bundle: nil)
+        subscribeUserIntrafaceStyle()
+    }
+
+    deinit {
+        unsubscribeUserInterfaceStyle()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,6 +45,16 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func userInterfaceStyleDidChange(_ userInterfaceStyle: UIUserInterfaceStyle) {
+        // Update color here.
+        switch userInterfaceStyle {
+        case .light, .unspecified:
+            view.backgroundColor = .white
+        case .dark:
+            view.backgroundColor = .gray
+        }
+    }
+
     @objc func handleButtonTap(_ object: Any) {
         show(SecondViewController(), sender: self)
     }
@@ -54,4 +69,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

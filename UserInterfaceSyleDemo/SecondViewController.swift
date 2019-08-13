@@ -8,10 +8,32 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UserInterfaceStyleChanging {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+        subscribeUserIntrafaceStyle()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        unsubscribeUserInterfaceStyle()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        view.backgroundColor = .gray
+    func userInterfaceStyleDidChange(_ userInterfaceStyle: UIUserInterfaceStyle) {
+        // Update color here.
+        switch userInterfaceStyle {
+        case .light, .unspecified:
+            view.backgroundColor = .white
+        case .dark:
+            view.backgroundColor = .gray
+        }
     }
 }
