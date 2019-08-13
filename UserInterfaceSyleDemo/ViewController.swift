@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import UserNotifications
 
 class ViewController: UIViewController {
     var appApearanceState: AppAppearanceState
+
+    var button = UIButton()
 
     init(appAppearanceState: AppAppearanceState) {
         self.appApearanceState = appAppearanceState
@@ -23,7 +24,24 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Button
+        button.setTitle("Button", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
+
+        // View
+        view.addSubview(button)
         view.backgroundColor = .white
+
+        // Constraint
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0.0).isActive = true
+        button.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0.0).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    @objc func handleButtonTap(_ object: Any) {
+        show(SecondViewController(), sender: self)
     }
 
     // Update user interface style in the root view controller.
